@@ -144,18 +144,23 @@
   <input v-model="user.first_name" type="text"><br>
   <input v-model="user.last_name" type="text"><br>
   {{ user.first_name }}{{ user.last_name }}
+  <br>
 
+  <BaseAlert :variant="variantSucess">{{ text }}</BaseAlert>
+  <BaseAlert>{{ text }}</BaseAlert>
+  <BaseAlert :variant="variantDanger">{{ text }}</BaseAlert>
+  <BaseAlert>{{ text }}</BaseAlert>
 </template>
 
 <script>
 import BaseCard from './components/BaseCard.vue';
 import TheHeader from './components/TheHeader.vue';
-
+import BaseAlert from './components/BaseAlert.vue';
 
 
 export default {
   name: 'App',
-  components:{TheHeader,BaseCard},
+  components:{TheHeader,BaseCard,BaseAlert},
 
   data() {
     return {
@@ -164,6 +169,9 @@ export default {
         last_name: '',
         showHeader:true
       },
+      variantDanger:'danger',
+      variantSucess: 'sucess',
+      text:'Seu formulário foi enviado',
       nameWatch:'',
       newName: 'Teste',
       pageCount:5,
