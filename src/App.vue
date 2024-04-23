@@ -146,10 +146,10 @@
   {{ user.first_name }}{{ user.last_name }}
   <br>
 
-  <BaseAlert :variant="variantSucess">{{ text }}</BaseAlert>
-  <BaseAlert>{{ text }}</BaseAlert>
+  <BaseAlert v-if="showAlert" :variant="variantSucess" @close="onClose()">{{ text }}</BaseAlert>
+  <!-- <BaseAlert>{{ text }}</BaseAlert>
   <BaseAlert :variant="variantDanger">{{ text }}</BaseAlert>
-  <BaseAlert>{{ text }}</BaseAlert>
+  <BaseAlert>{{ text }}</BaseAlert> -->
 </template>
 
 <script>
@@ -169,6 +169,7 @@ export default {
         last_name: '',
         showHeader:true
       },
+      showAlert:true,
       variantDanger:'danger',
       variantSucess: 'sucess',
       text:'Seu formulário foi enviado',
@@ -232,6 +233,10 @@ export default {
     }
   },
   methods: {
+    onClose(){
+      this.showAlert = false
+      console.log('on close')
+    },
     clicando($evt) {
       console.log('Clicou', $evt)
     },

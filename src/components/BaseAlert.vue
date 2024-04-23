@@ -12,6 +12,9 @@
     <div :class="baseClass">
         {{ test }}
         <slot />
+        <button @click="onclick()">
+            X
+        </button>
     </div>
 </template>
 
@@ -30,6 +33,12 @@ export default {
         test: {
             type:String,
             default: 'test'
+        }
+    },
+    methods:{
+        onclick(){
+            this.$emit('close')
+            console.log('clicou')
         }
     },
     computed: {
@@ -51,6 +60,8 @@ export default {
     border-radius: 6px;
     color: gray;
     background: #ddd;
+    display: flex;
+    justify-content: space-between;
 }
 
 .alert-sucess {
